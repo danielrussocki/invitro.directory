@@ -8,10 +8,12 @@ import AppNavigationMenu, {
 export default function AppAuthLayout() {
   return (
     <>
-      <div className="fixed top-0 left-0 w-full py-5">
+      <div className="fixed top-0 left-0 w-full py-10 2xl:py-6.5">
         <AppNavigationMenu>
           <AppNavigationItem href="/">Home</AppNavigationItem>
-          <AppNavigationItem href="/auth/login">Login</AppNavigationItem>
+          <AppNavigationItem href="/auth/login">
+            Booking System
+          </AppNavigationItem>
           <AppNavigationItem
             isTrigger
             content={

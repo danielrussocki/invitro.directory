@@ -4,7 +4,8 @@ import App from "@/App";
 /* layouts */
 import AppAuthLayout from "@/components/auth/Layout";
 /* pages */
-import AppAuthPage from "@/components/auth/Page";
+import AppAuthLoginPage from "@/components/auth/login/Page";
+import AppAuthRegisterPage from "@/components/auth/register/Page";
 
 export default function AppRouting() {
   return (
@@ -14,7 +15,8 @@ export default function AppRouting() {
         <Route index element={<App />} />
         {/* auth */}
         <Route path="auth" element={<AppAuthLayout />}>
-          <Route path="login" element={<AppAuthPage />} />
+          <Route path="login" element={<AppAuthLoginPage />} />
+          <Route path="register" element={<AppAuthRegisterPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
