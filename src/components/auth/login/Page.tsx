@@ -5,19 +5,24 @@ import AppImage from "@/components/_core/media/AppImage";
 
 export default function AppAuthLoginPage() {
   return (
-    <div className="bg-sky-950">
-      <main className="container min-h-screen flex items-center mx-auto p-5">
+    <div className="bg-white">
+      <main className="w-full flex items-center p-5">
         <div className="w-full h-full grid grid-cols-2 gap-5">
           <AppImage
-            className="w-full h-full object-cover rounded-xl"
-            src="https://cdn.midjourney.com/b7896738-826d-4b15-9131-f19946363717/0_3.png"
+            className="w-full h-full min-h-screen object-cover rounded-xl border-2 border-black"
+            src="https://i0.wp.com/port2flavors.com/wp-content/uploads/2022/07/placeholder-614.png?fit=1200%2C800&ssl=1"
             alt=""
           />
           <div className="w-full flex items-center px-10">
             <div className="w-full">
               <AppForm>
-                <AppInput name="email" placeholder="john.doe@example.com" />
                 <AppInput
+                  label="Email"
+                  name="email"
+                  placeholder="john.doe@example.com"
+                />
+                <AppInput
+                  label="Password"
                   name="password"
                   placeholder="********"
                   type="password"

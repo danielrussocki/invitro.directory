@@ -26,7 +26,7 @@ export default function AppInput({ name, type = "text", ...props }: Props) {
       </div>
       <Form.Control asChild>
         <input
-          className="box-border inline-flex py-2 w-full appearance-none items-center justify-center rounded px-2.5 text-base leading-none bg-white text-violet-500 shadow-sm outline-none selection:bg-black selection:text-white hover:shadow-sm focus:shadow-sm"
+          className="border-2 inline-flex py-2 w-full appearance-none items-center justify-center rounded px-2.5 text-base leading-none bg-white shadow-sm outline-none selection:bg-black selection:text-white hover:shadow-sm focus:shadow-sm"
           placeholder={props.placeholder}
           type={type}
           required
