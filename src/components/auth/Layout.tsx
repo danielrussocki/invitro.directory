@@ -11,6 +11,7 @@ export default function AppAuthLayout() {
       <AppNavigationMenu>
         <AppNavigationItem href="/">Home</AppNavigationItem>
         <AppNavigationItem href="/auth/login">Login</AppNavigationItem>
+        <AppNavigationItem isTrigger>About me</AppNavigationItem>
       </AppNavigationMenu>
       <Outlet />
     </>
