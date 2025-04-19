@@ -4,11 +4,20 @@
 @custom-variant state-visible (&[data-state="visible"]);
 @custom-variant state-hidden (&[data-state="hidden"]);
 @custom-variant state-open (&[data-state="open"]);
+@custom-variant state-closed (&[data-state="closed"]);
 @custom-variant parent-state-open ([data-state="open"] > &);
+@custom-variant motion-from-start (&[data-motion="from-start"]);
+@custom-variant motion-from-end (&[data-motion="from-end"]);
+@custom-variant motion-to-start (&[data-motion="to-start"]);
+@custom-variant motion-to-end (&[data-motion="to-end"]);
 
 @theme {
   /* transition properties */
   --transition-width-transform: width, transform;
+  --transition-size: width, height;
+  /* shadows */
+  --shadow-navigation-viewport: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   /* animations */
   --animate-enter-from-left: enterFromLeft 250ms ease;
   --animate-enter-from-right: enterFromRight 250ms ease;

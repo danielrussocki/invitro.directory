@@ -1,6 +1,6 @@
-import React from "react";
+import type { ReactNode } from "react";
 
 export type ICommonProps = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   className?: string;
 };
