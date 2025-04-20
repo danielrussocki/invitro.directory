@@ -27,6 +27,9 @@
   --animate-fade-out: fadeOut 200ms ease;
   --animate-scale-in: scaleIn 200ms ease;
   --animate-scale-out: scaleOut 200ms ease;
+  --animate-hide: hide 100ms ease-in;
+  --animate-slide-in: slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-swipe-out: swipeOut 100ms ease-out;
 
   @keyframes enterFromRight {
     from {
@@ -109,6 +112,33 @@
     }
     to {
       opacity: 0;
+    }
+  }
+
+  @keyframes hide {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(calc(100% + var(--viewport-padding)));
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes swipeOut {
+    from {
+      transform: translateX(var(--radix-toast-swipe-end-x));
+    }
+    to {
+      transform: translateX(calc(100% + var(--viewport-padding)));
     }
   }
 }

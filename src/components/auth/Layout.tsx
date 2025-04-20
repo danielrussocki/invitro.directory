@@ -1,4 +1,5 @@
 /* lib */
+import { Toast } from "radix-ui";
 import { Outlet, NavLink } from "react-router";
 /* components */
 import AppNavigationMenu, {
@@ -29,6 +30,7 @@ export default function AppAuthLayout() {
         </AppNavigationMenu>
       </div>
       <Outlet />
+      <Toast.Viewport className="fixed bottom-0 right-0 z-99999999 m-0 flex w-96 max-w-screen list-none flex-col gap-2.5 p-(--viewport-padding) outline-none [--viewport-padding:25px]" />
     </>
   );
 }
