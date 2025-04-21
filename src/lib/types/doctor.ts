@@ -1,6 +1,9 @@
 export type IDoctor = {
+  alias: string;
   name: string;
-  rating: number;
+  photo: string;
+  availability: string[];
+  location: string;
   specialty: string;
 };
 

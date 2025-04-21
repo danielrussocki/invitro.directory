@@ -1,14 +1,17 @@
+/* lib */
 import { Outlet } from "react-router";
+/* components */
+import AppContainer from "@/components/_core/grid/AppContainer";
+import AppAsideMenu from "@/components/_core/AppAsideMenu";
 
 export default function AppDashboardLayout() {
   return (
     <>
-      <div className="flex">
-        <aside>Menú</aside>
-        <div className="w-full">
+      <AppContainer className="h-screen" innerClassName="h-full">
+        <AppAsideMenu>
           <Outlet />
-        </div>
-      </div>
+        </AppAsideMenu>
+      </AppContainer>
     </>
   );
 }

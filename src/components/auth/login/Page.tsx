@@ -11,6 +11,7 @@ import AppToast, {
 import AppButton from "@/components/_core/button/AppButton";
 import AppDivider from "@/components/_core/panel/AppDivider";
 import AppParagraph from "@/components/_core/text/AppParagraph";
+import AppContainer from "@/components/_core/grid/AppContainer";
 import AppHeadingOne from "@/components/_core/heading/AppHeadingOne";
 /* icons */
 import {
@@ -41,76 +42,74 @@ export default function AppAuthLoginPage() {
 
   return (
     <>
-      <div className="bg-white">
-        <main className="w-full flex items-center p-5">
-          <div className="w-full h-full grid grid-cols-2 gap-5">
-            <AppImage
-              className="w-full h-full min-h-screen rounded-xl border-2 border-black"
-              src="https://i0.wp.com/port2flavors.com/wp-content/uploads/2022/07/placeholder-614.png?fit=1200%2C800&ssl=1"
-              alt=""
-            />
-            <div className="w-full flex items-center px-10">
-              <div className="w-full max-w-sm mx-auto">
-                <div className="mb-5 flex flex-col gap-2.5">
-                  <AppHeadingOne>Welcome!</AppHeadingOne>
-                  <AppParagraph>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Quisquam laboriosam distinctio beatae a quas ducimus.
-                  </AppParagraph>
-                </div>
-                <AppForm onSubmit={handleSubmit}>
-                  <AppInput
-                    label="Email"
-                    name="email"
-                    value="user@invitro.com"
-                    placeholder="john.doe@example.com"
-                  />
-                  <AppInput
-                    label="Password"
-                    name="password"
-                    value="12345678"
-                    placeholder="********"
-                    type="password"
-                  />
-                </AppForm>
-                <AppDivider className="mt-6 mb-5" label="or login with" />
-                <div className="flex w-full justify-center items-center gap-2.5">
-                  <AppButton
-                    aria-label="GitHub"
-                    onClick={() => externalLoginHandler()}
-                  >
-                    <GitHubLogoIcon width={18} height={18} />
-                  </AppButton>
-                  <AppButton
-                    aria-label="Twitter"
-                    onClick={() => externalLoginHandler()}
-                  >
-                    <TwitterLogoIcon width={18} height={18} />
-                  </AppButton>
-                  <AppButton
-                    aria-label="Discord"
-                    onClick={() => externalLoginHandler()}
-                  >
-                    <DiscordLogoIcon width={18} height={18} />
-                  </AppButton>
-                  <AppButton
-                    aria-label="Instagram"
-                    onClick={() => externalLoginHandler()}
-                  >
-                    <InstagramLogoIcon width={18} height={18} />
-                  </AppButton>
-                  <AppButton
-                    aria-label="LinkedIn"
-                    onClick={() => externalLoginHandler()}
-                  >
-                    <LinkedInLogoIcon width={18} height={18} />
-                  </AppButton>
-                </div>
+      <AppContainer innerClassName="flex items-center">
+        <div className="w-full h-full grid grid-cols-2 gap-5">
+          <AppImage
+            className="w-full h-full min-h-screen rounded-xl border-2 border-black"
+            src="https://i0.wp.com/port2flavors.com/wp-content/uploads/2022/07/placeholder-614.png?fit=1200%2C800&ssl=1"
+            alt=""
+          />
+          <div className="w-full flex items-center px-10">
+            <div className="w-full max-w-sm mx-auto">
+              <div className="mb-5 flex flex-col gap-2.5">
+                <AppHeadingOne>Welcome!</AppHeadingOne>
+                <AppParagraph>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Quisquam laboriosam distinctio beatae a quas ducimus.
+                </AppParagraph>
+              </div>
+              <AppForm onSubmit={handleSubmit}>
+                <AppInput
+                  label="Email"
+                  name="email"
+                  value="user@invitro.com"
+                  placeholder="john.doe@example.com"
+                />
+                <AppInput
+                  label="Password"
+                  name="password"
+                  value="12345678"
+                  placeholder="********"
+                  type="password"
+                />
+              </AppForm>
+              <AppDivider className="mt-6 mb-5" label="or login with" />
+              <div className="flex w-full justify-center items-center gap-2.5">
+                <AppButton
+                  aria-label="GitHub"
+                  onClick={() => externalLoginHandler()}
+                >
+                  <GitHubLogoIcon width={18} height={18} />
+                </AppButton>
+                <AppButton
+                  aria-label="Twitter"
+                  onClick={() => externalLoginHandler()}
+                >
+                  <TwitterLogoIcon width={18} height={18} />
+                </AppButton>
+                <AppButton
+                  aria-label="Discord"
+                  onClick={() => externalLoginHandler()}
+                >
+                  <DiscordLogoIcon width={18} height={18} />
+                </AppButton>
+                <AppButton
+                  aria-label="Instagram"
+                  onClick={() => externalLoginHandler()}
+                >
+                  <InstagramLogoIcon width={18} height={18} />
+                </AppButton>
+                <AppButton
+                  aria-label="LinkedIn"
+                  onClick={() => externalLoginHandler()}
+                >
+                  <LinkedInLogoIcon width={18} height={18} />
+                </AppButton>
               </div>
             </div>
           </div>
-        </main>
-      </div>
+        </div>
+      </AppContainer>
       <AppToast
         ref={toastRef}
         title="Stay tuned!"
