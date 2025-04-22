@@ -1,4 +1,84 @@
-import { IDoctor } from "@/lib/types/doctor";
+import { IDoctor, IAvailability } from "@/lib/types/doctor";
+/* utils */
+import { parseToMoment } from "@/lib/utils/date";
+
+const mockAvailability: IAvailability[] = [
+  {
+    date: parseToMoment("2025-04-19").toDate(),
+    hours: [
+      { available: true, time: "08:00" },
+      { available: true, time: "09:00" },
+      { available: true, time: "10:00" },
+      { available: true, time: "11:00" },
+      { available: true, time: "12:00" },
+      { available: true, time: "13:00" },
+      { available: false, time: "14:00" },
+      { available: false, time: "15:00" },
+      { available: true, time: "16:00" },
+      { available: true, time: "17:00" },
+    ],
+  },
+  {
+    date: parseToMoment("2025-04-20").toDate(),
+    hours: [
+      { available: true, time: "08:00" },
+      { available: true, time: "09:00" },
+      { available: true, time: "10:00" },
+      { available: true, time: "11:00" },
+      { available: true, time: "12:00" },
+      { available: true, time: "13:00" },
+      { available: false, time: "14:00" },
+      { available: false, time: "15:00" },
+      { available: true, time: "16:00" },
+      { available: true, time: "17:00" },
+    ],
+  },
+  {
+    date: parseToMoment("2025-04-21").toDate(),
+    hours: [
+      { available: true, time: "08:00" },
+      { available: true, time: "09:00" },
+      { available: true, time: "10:00" },
+      { available: true, time: "11:00" },
+      { available: true, time: "12:00" },
+      { available: true, time: "13:00" },
+      { available: false, time: "14:00" },
+      { available: false, time: "15:00" },
+      { available: true, time: "16:00" },
+      { available: true, time: "17:00" },
+    ],
+  },
+  {
+    date: parseToMoment("2025-04-22").toDate(),
+    hours: [
+      { available: true, time: "08:00" },
+      { available: true, time: "09:00" },
+      { available: true, time: "10:00" },
+      { available: true, time: "11:00" },
+      { available: true, time: "12:00" },
+      { available: true, time: "13:00" },
+      { available: false, time: "14:00" },
+      { available: false, time: "15:00" },
+      { available: true, time: "16:00" },
+      { available: true, time: "17:00" },
+    ],
+  },
+  {
+    date: parseToMoment("2025-04-23").toDate(),
+    hours: [
+      { available: true, time: "08:00" },
+      { available: true, time: "09:00" },
+      { available: true, time: "10:00" },
+      { available: true, time: "11:00" },
+      { available: true, time: "12:00" },
+      { available: true, time: "13:00" },
+      { available: false, time: "14:00" },
+      { available: false, time: "15:00" },
+      { available: true, time: "16:00" },
+      { available: true, time: "17:00" },
+    ],
+  },
+];
 
 export const doctorListMock: IDoctor[] = [
   {
@@ -6,7 +86,7 @@ export const doctorListMock: IDoctor[] = [
     name: "Carlos Ramirez",
     photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=carlosra",
     specialty: "Plastic Surgeon",
-    availability: ["Monday 09:00-13:00", "Wednesday 14:00-18:00"],
+    availability: [...mockAvailability],
     location: "Mexico City, Mexico",
   },
   {
@@ -14,7 +94,7 @@ export const doctorListMock: IDoctor[] = [
     name: "Maria Gonzalez",
     photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=mariagon",
     specialty: "Otolaryngologist",
-    availability: ["Tuesday 10:00-16:00", "Thursday 09:00-13:00"],
+    availability: [...mockAvailability],
     location: "Guadalajara, Mexico",
   },
   {
@@ -22,15 +102,15 @@ export const doctorListMock: IDoctor[] = [
     name: "Javier Fernandez",
     photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=javierfer",
     specialty: "Dermatologist",
-    availability: ["Monday 08:00-12:00", "Friday 10:00-14:00"],
+    availability: [...mockAvailability],
     location: "Monterrey, Mexico",
   },
   {
     alias: "Dr.",
     name: "Lucia Martinez",
-    photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=luciam",
+    photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=luc",
     specialty: "Maxillofacial Surgeon",
-    availability: ["Wednesday 08:00-13:00", "Friday 14:00-18:00"],
+    availability: [...mockAvailability],
     location: "Tijuana, Mexico",
   },
   {
@@ -38,7 +118,7 @@ export const doctorListMock: IDoctor[] = [
     name: "Andres Lopez",
     photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=andres",
     specialty: "Ophthalmologist",
-    availability: ["Tuesday 09:00-12:00", "Thursday 13:00-17:00"],
+    availability: [...mockAvailability],
     location: "Cancun, Mexico",
   },
   {
@@ -46,7 +126,7 @@ export const doctorListMock: IDoctor[] = [
     name: "Sofia Perez",
     photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=sofiaperez",
     specialty: "Neurologist",
-    availability: ["Monday 14:00-18:00", "Wednesday 09:00-12:00"],
+    availability: [...mockAvailability],
     location: "Puebla, Mexico",
   },
   {
@@ -54,7 +134,7 @@ export const doctorListMock: IDoctor[] = [
     name: "Diego Hernandez",
     photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=diego",
     specialty: "Cardiologist",
-    availability: ["Tuesday 14:00-18:00", "Friday 08:00-12:00"],
+    availability: [...mockAvailability],
     location: "Leon, Mexico",
   },
   {
@@ -62,7 +142,7 @@ export const doctorListMock: IDoctor[] = [
     name: "Paula Ruiz",
     photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=paularui",
     specialty: "Endocrinologist",
-    availability: ["Thursday 09:00-13:00", "Saturday 10:00-14:00"],
+    availability: [...mockAvailability],
     location: "Merida, Mexico",
   },
   {
@@ -70,7 +150,7 @@ export const doctorListMock: IDoctor[] = [
     name: "Fernando Torres",
     photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=fernandot",
     specialty: "Orthopedic Surgeon",
-    availability: ["Monday 08:00-12:00", "Thursday 14:00-18:00"],
+    availability: [...mockAvailability],
     location: "Queretaro, Mexico",
   },
   {
@@ -78,7 +158,7 @@ export const doctorListMock: IDoctor[] = [
     name: "Ana Mendoza",
     photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=ana",
     specialty: "Gynecologist",
-    availability: ["Wednesday 10:00-14:00", "Friday 13:00-17:00"],
+    availability: [...mockAvailability],
     location: "San Luis Potosi, Mexico",
   },
 ];
