@@ -12,8 +12,8 @@ export default function AppContainer({
   className,
   innerClassName,
 }: Props) {
-  const containerClassName = classNames("bg-white", className);
-  const innerContainerClassName = classNames("w-full p-5", innerClassName);
+  const containerClassName = classNames("bg-slate-200", className);
+  const innerContainerClassName = classNames("w-full", innerClassName);
 
   return (
     <div className={containerClassName}>

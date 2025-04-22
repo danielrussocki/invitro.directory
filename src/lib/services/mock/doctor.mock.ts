@@ -84,7 +84,10 @@ export const doctorListMock: IDoctor[] = [
   {
     alias: "Dr.",
     name: "Carlos Ramirez",
-    photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=carlosra",
+    verified: true,
+    averageRating: 4.5,
+    photo:
+      "https://api.dicebear.com/9.x/micah/svg?seed=carl&backgroundColor=b6e3f4,c0aede,d1d4f9",
     specialty: "Plastic Surgeon",
     availability: [...mockAvailability],
     location: "Mexico City, Mexico",
@@ -92,7 +95,10 @@ export const doctorListMock: IDoctor[] = [
   {
     alias: "Dr.",
     name: "Maria Gonzalez",
-    photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=mariagon",
+    verified: true,
+    averageRating: 4.2,
+    photo:
+      "https://api.dicebear.com/9.x/micah/svg?seed=mariagon&backgroundColor=b6e3f4,c0aede,d1d4f9",
     specialty: "Otolaryngologist",
     availability: [...mockAvailability],
     location: "Guadalajara, Mexico",
@@ -100,7 +106,10 @@ export const doctorListMock: IDoctor[] = [
   {
     alias: "Dr.",
     name: "Javier Fernandez",
-    photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=javierfer",
+    verified: true,
+    averageRating: 4.9,
+    photo:
+      "https://api.dicebear.com/9.x/micah/svg?seed=jav&backgroundColor=b6e3f4,c0aede,d1d4f9",
     specialty: "Dermatologist",
     availability: [...mockAvailability],
     location: "Monterrey, Mexico",
@@ -108,7 +117,10 @@ export const doctorListMock: IDoctor[] = [
   {
     alias: "Dr.",
     name: "Lucia Martinez",
-    photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=luc",
+    verified: true,
+    averageRating: 2.1,
+    photo:
+      "https://api.dicebear.com/9.x/micah/svg?seed=luci&backgroundColor=b6e3f4,c0aede,d1d4f9",
     specialty: "Maxillofacial Surgeon",
     availability: [...mockAvailability],
     location: "Tijuana, Mexico",
@@ -116,7 +128,10 @@ export const doctorListMock: IDoctor[] = [
   {
     alias: "Dr.",
     name: "Andres Lopez",
-    photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=andres",
+    verified: false,
+    averageRating: 3.7,
+    photo:
+      "https://api.dicebear.com/9.x/micah/svg?seed=andresl&backgroundColor=b6e3f4,c0aede,d1d4f9",
     specialty: "Ophthalmologist",
     availability: [...mockAvailability],
     location: "Cancun, Mexico",
@@ -124,7 +139,10 @@ export const doctorListMock: IDoctor[] = [
   {
     alias: "Dr.",
     name: "Sofia Perez",
-    photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=sofiaperez",
+    verified: true,
+    averageRating: 5.0,
+    photo:
+      "https://api.dicebear.com/9.x/micah/svg?seed=sofiape&backgroundColor=b6e3f4,c0aede,d1d4f9",
     specialty: "Neurologist",
     availability: [...mockAvailability],
     location: "Puebla, Mexico",
@@ -132,7 +150,10 @@ export const doctorListMock: IDoctor[] = [
   {
     alias: "Dr.",
     name: "Diego Hernandez",
-    photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=diego",
+    verified: false,
+    averageRating: 4.5,
+    photo:
+      "https://api.dicebear.com/9.x/micah/svg?seed=diegohern&backgroundColor=b6e3f4,c0aede,d1d4f9",
     specialty: "Cardiologist",
     availability: [...mockAvailability],
     location: "Leon, Mexico",
@@ -140,7 +161,10 @@ export const doctorListMock: IDoctor[] = [
   {
     alias: "Dr.",
     name: "Paula Ruiz",
-    photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=paularui",
+    verified: true,
+    averageRating: 1.5,
+    photo:
+      "https://api.dicebear.com/9.x/micah/svg?seed=paularui&backgroundColor=b6e3f4,c0aede,d1d4f9",
     specialty: "Endocrinologist",
     availability: [...mockAvailability],
     location: "Merida, Mexico",
@@ -148,7 +172,10 @@ export const doctorListMock: IDoctor[] = [
   {
     alias: "Dr.",
     name: "Fernando Torres",
-    photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=fernandot",
+    verified: true,
+    averageRating: 3.5,
+    photo:
+      "https://api.dicebear.com/9.x/micah/svg?seed=fernand&backgroundColor=b6e3f4,c0aede,d1d4f9",
     specialty: "Orthopedic Surgeon",
     availability: [...mockAvailability],
     location: "Queretaro, Mexico",
@@ -156,7 +183,10 @@ export const doctorListMock: IDoctor[] = [
   {
     alias: "Dr.",
     name: "Ana Mendoza",
-    photo: "https://api.dicebear.com/9.x/lorelei/svg?seed=ana",
+    verified: true,
+    averageRating: 4.5,
+    photo:
+      "https://api.dicebear.com/9.x/micah/svg?seed=ana&backgroundColor=b6e3f4,c0aede,d1d4f9",
     specialty: "Gynecologist",
     availability: [...mockAvailability],
     location: "San Luis Potosi, Mexico",

@@ -3,10 +3,13 @@ import { use, Suspense } from "react";
 /* components */
 import AppCard from "@/components/_core/panel/AppCard";
 import AppAvatar from "@/components/_core/misc/AppAvatar";
+import AppRating from "@/components/_core/form/AppRating";
 import AppDialog from "@/components/_core/overlay/AppDialog";
 import AppToggleGroup, {
   AppToggleGroupItem,
 } from "@/components/_core/form/AppToggleGroup";
+/* icons */
+import { CheckCircledIcon } from "@radix-ui/react-icons";
 /* services */
 import { appDoctorService } from "@/lib/services/doctor";
 /* utils */
@@ -16,27 +19,36 @@ export default function AppDashboardPage() {
   const list = use(appDoctorService.getDoctors);
 
   return (
-    <div className="w-full h-full">
-      <div className="w-full grid grid-cols-3 grid-rows-4 gap-2.5">
+    <div className="w-full">
+      <div className="w-full grid grid-cols-3 grid-rows-4 gap-5">
         <Suspense fallback={<p>Loading...</p>}>
           {list.map((item, index) => {
             return (
-              <AppCard key={index} className="flex gap-2.5">
+              <AppCard key={index} className="flex gap-5">
                 <AppAvatar
                   src={item.photo}
-                  className="shrink-0 border-2 shadow-xs"
+                  className="shrink-0 border border-gray-200"
                 >
                   {item.alias}
                 </AppAvatar>
                 <div className="flex flex-col gap-5">
                   <div>
-                    <h6 className="font-medium text-lg">
+                    <h6 className="font-medium inline-flex gap-2 text-lg">
                       {item.alias} {item.name}
+                      {item.verified && (
+                        <span className="inline-flex items-center text-blue-400">
+                          <CheckCircledIcon />
+                        </span>
+                      )}
                     </h6>
                     <p className="text-xs">
                       {item.specialty} -{" "}
                       <span className="opacity-40">{item.location}</span>
                     </p>
+                    <AppRating
+                      className="mt-1.5 text-blue-500"
+                      value={item.averageRating}
+                    />
                     <div className="mt-2.5">
                       {item.availability.map((schedule, i) => {
                         return (

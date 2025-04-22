@@ -7,7 +7,7 @@ type Props = ICommonProps;
 
 export default function AppCard({ children, className }: Props) {
   const cardClassName = classNames(
-    "flex border-2 rounded-md pl-2 pt-2 pb-2 shadow-sm",
+    "flex rounded-xl p-5 shadow-lg bg-white border border-gray-200",
     className
   );
 

@@ -35,3 +35,14 @@ export function parseToMoment(
 ) {
   return moment(date, format);
 }
+
+export function getClosestFutureDate(
+  dates: MomentInput[],
+  format: string = "YYYY-MM-DD"
+) {
+  const today = moment().startOf("day");
+  return (
+    dates.filter((date) => moment(date, format).isAfter(today)).sort()?.[0] ??
+    null
+  );
+}

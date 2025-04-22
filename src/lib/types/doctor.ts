@@ -12,6 +12,8 @@ export type IDoctor = {
   alias: string;
   name: string;
   photo: string;
+  verified: boolean;
+  averageRating: number;
   availability: IAvailability[];
   location: string;
   specialty: string;

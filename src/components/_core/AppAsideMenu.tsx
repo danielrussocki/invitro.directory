@@ -21,42 +21,54 @@ export default function AppAsideMenu({ children }: Props) {
   }
 
   return (
-    <div className="flex gap-x-5 h-full">
-      <motion.aside
-        className="border-2 p-2.5 w-full h-full rounded-lg sticky top-0 left-0 flex"
-        variants={{
-          closed: { width: 60, justifyContent: "center" },
-          opened: { width: 320, justifyContent: "flex-end" },
-        }}
-        initial="closed"
-        animate={isOpen ? "opened" : "closed"}
-      >
-        <motion.div layout>
-          <AppButton onClick={() => asideClickHandler()}>
-            <AnimatePresence>
-              {isOpen ? (
-                <MotionCross1Icon
-                  initial={{ opacity: 0 }}
-                  exit={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  width={16}
-                  height={16}
-                />
-              ) : (
-                <MotionHamburguerIcon
-                  initial={{ opacity: 0 }}
-                  exit={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  width={16}
-                  height={16}
-                />
-              )}
-            </AnimatePresence>
-          </AppButton>
-        </motion.div>
-      </motion.aside>
-      <div className="w-full min-h-full border-2 rounded-lg p-2.5">
-        <div className="w-full h-full overflow-y-scroll">{children}</div>
+    <div className="flex">
+      <div className="h-screen p-5 sticky top-0 left-0 z-99">
+        <motion.aside
+          className="p-2.5 w-full h-full flex bg-white"
+          variants={{
+            closed: {
+              width: 60,
+              justifyContent: "center",
+              borderRadius: 30,
+            },
+            opened: {
+              width: 320,
+              justifyContent: "flex-end",
+              borderRadius: 20,
+            },
+          }}
+          initial="closed"
+          animate={isOpen ? "opened" : "closed"}
+        >
+          <motion.div layout>
+            <AppButton rounded onClick={() => asideClickHandler()}>
+              <AnimatePresence>
+                {isOpen ? (
+                  <MotionCross1Icon
+                    initial={{ opacity: 0 }}
+                    exit={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    width={16}
+                    height={16}
+                  />
+                ) : (
+                  <MotionHamburguerIcon
+                    initial={{ opacity: 0 }}
+                    exit={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    width={16}
+                    height={16}
+                  />
+                )}
+              </AnimatePresence>
+            </AppButton>
+          </motion.div>
+        </motion.aside>
+      </div>
+      <div className="w-full py-5 pr-5">
+        <div className="bg-white w-full min-h-screen p-10 rounded-4xl">
+          {children}
+        </div>
       </div>
     </div>
   );

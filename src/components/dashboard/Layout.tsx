@@ -7,7 +7,7 @@ import AppAsideMenu from "@/components/_core/AppAsideMenu";
 export default function AppDashboardLayout() {
   return (
     <>
-      <AppContainer className="h-screen" innerClassName="h-full">
+      <AppContainer innerClassName="h-full">
         <AppAsideMenu>
           <Outlet />
         </AppAsideMenu>

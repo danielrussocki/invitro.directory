@@ -43,7 +43,7 @@ export default function AppDialog({
             </Dialog.Overlay>
             <Dialog.Content asChild>
               <motion.div
-                className="fixed bg-white z-99999 left-1/2 top-1/2 max-h-[85vh] w-[90vw] max-w-[500px] -translate-x-1/2 -translate-y-1/2 transform-3d rounded-md p-6 shadow-lg focus:outline-none"
+                className="fixed bg-white z-99999 left-1/2 top-1/2 max-h-[85vh] w-[90vw] max-w-[500px] -translate-x-1/2 -translate-y-1/2 transform-3d rounded-md pt-15 pb-6 px-6 shadow-lg focus:outline-none"
                 exit={{
                   filter: "blur(10px)",
                   opacity: 0,
