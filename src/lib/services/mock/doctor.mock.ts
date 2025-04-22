@@ -4,21 +4,6 @@ import { parseToMoment } from "@/lib/utils/date";
 
 const mockAvailability: IAvailability[] = [
   {
-    date: parseToMoment("2025-04-19").toDate(),
-    hours: [
-      { available: true, time: "08:00" },
-      { available: true, time: "09:00" },
-      { available: true, time: "10:00" },
-      { available: true, time: "11:00" },
-      { available: true, time: "12:00" },
-      { available: true, time: "13:00" },
-      { available: false, time: "14:00" },
-      { available: false, time: "15:00" },
-      { available: true, time: "16:00" },
-      { available: true, time: "17:00" },
-    ],
-  },
-  {
     date: parseToMoment("2025-04-20").toDate(),
     hours: [
       { available: true, time: "08:00" },
@@ -65,6 +50,21 @@ const mockAvailability: IAvailability[] = [
   },
   {
     date: parseToMoment("2025-04-23").toDate(),
+    hours: [
+      { available: true, time: "08:00" },
+      { available: true, time: "09:00" },
+      { available: true, time: "10:00" },
+      { available: true, time: "11:00" },
+      { available: true, time: "12:00" },
+      { available: true, time: "13:00" },
+      { available: false, time: "14:00" },
+      { available: false, time: "15:00" },
+      { available: true, time: "16:00" },
+      { available: true, time: "17:00" },
+    ],
+  },
+  {
+    date: parseToMoment("2025-04-24").toDate(),
     hours: [
       { available: true, time: "08:00" },
       { available: true, time: "09:00" },

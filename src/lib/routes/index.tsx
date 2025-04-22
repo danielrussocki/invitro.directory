@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 /* components */
 import App from "@/App";
 /* layouts */
@@ -16,9 +16,13 @@ export default function AppRouting() {
         {/* not protected */}
         <Route index element={<App />} />
         {/* auth */}
-        <Route path="auth" element={<AppAuthLayout />}>
-          <Route path="login" element={<AppAuthLoginPage />} />
-          <Route path="register" element={<AppAuthRegisterPage />} />
+        <Route element={<AppAuthLayout />}>
+          <Route path="auth/login" element={<AppAuthLoginPage />} />
+          <Route path="auth/register" element={<AppAuthRegisterPage />} />
+          <Route
+            path="auth/*"
+            element={<Navigate to="/auth/login" replace />}
+          />
         </Route>
         {/* dashboard */}
         <Route path="dashboard" element={<AppDashboardLayout />}>
