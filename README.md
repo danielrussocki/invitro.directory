@@ -1,5 +1,17 @@
 # React + TypeScript + Vite
 
+To run the project in development mode:
+
+```bash
+npm run dev
+```
+
+To build the project for production:
+
+```bash
+npm run build
+```
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
@@ -24,31 +36,38 @@ export default tseslint.config({
   languageOptions: {
     // other options...
     parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
       tsconfigRootDir: import.meta.dirname,
     },
   },
-})
+});
 ```
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+import reactX from "eslint-plugin-react-x";
+import reactDom from "eslint-plugin-react-dom";
 
 export default tseslint.config({
   plugins: {
     // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
+    "react-x": reactX,
+    "react-dom": reactDom,
   },
   rules: {
     // other rules...
     // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
+    ...reactX.configs["recommended-typescript"].rules,
     ...reactDom.configs.recommended.rules,
   },
-})
+});
 ```
+
+## Known limitations or next steps
+
+- The buttons showing available hours in the cards (before the "Book Appointment" button) should open a confirmation modal for booking, and this should also be added to the summary view.
+- The summary view should include a filter option by date, from the nearest to the farthest.
+- The login view currently lacks authentication support via providers like Google, Discord, etc.
+- The dashboard navigation menu is very minimal and should be improved for better usability and aesthetics.

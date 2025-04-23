@@ -12,7 +12,7 @@ export default function AppNavigation() {
             <AppHeading className="uppercase" size="xl">
               Logo
             </AppHeading>
-            <div className="flex gap-1.5 font-medium">
+            <div className="flex gap-1.5 font-medium text-sm lg:text-base leading-none">
               <NavLink
                 className="px-3 py-1.5 rounded-lg hover:bg-gray-100"
                 to="/dashboard"

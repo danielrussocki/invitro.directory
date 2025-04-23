@@ -25,7 +25,7 @@ export default function AppSummaryPage() {
   return (
     <>
       <AppHeading className="font-medium mb-10">Your Appointments</AppHeading>
-      <div className="w-full grid grid-cols-2 gap-5 lg:grid-cols-4">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-4">
         {appointments.length > 0 ? (
           appointments.map((item, index) => {
             return (
