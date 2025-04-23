@@ -8,6 +8,8 @@ import AppAccordion, {
 import AppToggleGroup, {
   AppToggleGroupItem,
 } from "@/components/_core/form/AppToggleGroup";
+/* icons */
+import { MixerHorizontalIcon } from "@radix-ui/react-icons";
 /* services */
 import { appDoctorService } from "@/lib/services/doctor";
 /* utils */
@@ -55,12 +57,20 @@ export default function AppDashboardPage() {
   return (
     <div className="w-full">
       <AppAccordion
-        className="mb-10"
+        className="mb-10 rounded-xl"
         type="single"
         defaultValue="filter"
         collapsible
       >
-        <AppAccordionItem value="filter" header="Filter" className="text-xs">
+        <AppAccordionItem
+          value="filter"
+          header={
+            <>
+              <MixerHorizontalIcon /> Filter
+            </>
+          }
+          className="text-xs"
+        >
           <div className="mb-5">
             <p className="text-xs mb-2 font-medium ml-3.5">By Availability:</p>
             <AppToggleGroup
@@ -116,7 +126,7 @@ export default function AppDashboardPage() {
               return <AppCard key={item.id} {...item} />;
             })
           ) : (
-            <p>No se encontraron elementos</p>
+            <p>We couldn't find any results based on your selected filters.</p>
           )}
         </Suspense>
       </div>
