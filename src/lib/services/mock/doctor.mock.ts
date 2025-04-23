@@ -82,6 +82,7 @@ const mockAvailability: IAvailability[] = [
 
 export const doctorListMock: IDoctor[] = [
   {
+    id: 1,
     alias: "Dr.",
     name: "Carlos Ramirez",
     verified: true,
@@ -93,6 +94,7 @@ export const doctorListMock: IDoctor[] = [
     location: "Mexico City, Mexico",
   },
   {
+    id: 2,
     alias: "Dr.",
     name: "Maria Gonzalez",
     verified: true,
@@ -180,6 +182,7 @@ export const doctorListMock: IDoctor[] = [
     location: "Guadalajara, Mexico",
   },
   {
+    id: 3,
     alias: "Dr.",
     name: "Javier Fernandez",
     verified: true,
@@ -191,6 +194,7 @@ export const doctorListMock: IDoctor[] = [
     location: "Monterrey, Mexico",
   },
   {
+    id: 4,
     alias: "Dr.",
     name: "Lucia Martinez",
     verified: true,
@@ -278,6 +282,7 @@ export const doctorListMock: IDoctor[] = [
     location: "Tijuana, Mexico",
   },
   {
+    id: 5,
     alias: "Dr.",
     name: "Andres Lopez",
     verified: false,
@@ -289,6 +294,7 @@ export const doctorListMock: IDoctor[] = [
     location: "Cancun, Mexico",
   },
   {
+    id: 6,
     alias: "Dr.",
     name: "Sofia Perez",
     verified: true,
@@ -300,6 +306,7 @@ export const doctorListMock: IDoctor[] = [
     location: "Puebla, Mexico",
   },
   {
+    id: 7,
     alias: "Dr.",
     name: "Diego Hernandez",
     verified: false,
@@ -311,6 +318,7 @@ export const doctorListMock: IDoctor[] = [
     location: "Leon, Mexico",
   },
   {
+    id: 8,
     alias: "Dr.",
     name: "Paula Ruiz",
     verified: true,
@@ -322,6 +330,7 @@ export const doctorListMock: IDoctor[] = [
     location: "Merida, Mexico",
   },
   {
+    id: 9,
     alias: "Dr.",
     name: "Fernando Torres",
     verified: true,
@@ -333,6 +342,7 @@ export const doctorListMock: IDoctor[] = [
     location: "Queretaro, Mexico",
   },
   {
+    id: 10,
     alias: "Dr.",
     name: "Ana Mendoza",
     verified: true,
@@ -343,4 +353,15 @@ export const doctorListMock: IDoctor[] = [
     availability: [...mockAvailability],
     location: "San Luis Potosi, Mexico",
   },
+];
+
+export const doctorSpecialtiesMock = [
+  ...new Set(doctorListMock.map((doc) => doc.specialty)),
+];
+
+export const availableDates = [
+  "2025-04-23",
+  "2025-04-24",
+  "2025-04-25",
+  "2025-04-26",
 ];

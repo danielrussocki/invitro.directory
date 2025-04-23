@@ -1,44 +1,123 @@
 /* lib */
-import { use, Suspense, useState } from "react";
+import { use, Suspense, useMemo, startTransition } from "react";
 /* components */
 import AppCard from "@/components/dashboard/components/AppDoctorCard";
 import AppAccordion, {
   AppAccordionItem,
 } from "@/components/_core/panel/AppAccordion";
+import AppToggleGroup, {
+  AppToggleGroupItem,
+} from "@/components/_core/form/AppToggleGroup";
 /* services */
 import { appDoctorService } from "@/lib/services/doctor";
+/* utils */
+import { getCalendarDate, getSmallDate, formatDate } from "@/lib/utils/date";
 /* types */
-import type { IDoctor } from "@/lib/types/doctor";
+import { useFilterStore } from "@/lib/store/filter";
 
 export default function AppDashboardPage() {
   const list = use(appDoctorService.getDoctors);
-  const [data, setData] = useState<IDoctor[]>([...list]);
+  const specialties = use(appDoctorService.getSpecialtiesCatalog);
+  const availabilities = use(appDoctorService.getAvailabilitiesCatalog);
+  /* state */
+  const selectedDates = useFilterStore((state) => state.dates);
+  const selectedSpecialties = useFilterStore((state) => state.specialties);
+  const setSelectedDates = useFilterStore((state) => state.setDates);
+  const setSelectedSpecialties = useFilterStore(
+    (state) => state.setSpecialties
+  );
 
-  function resetFilters() {
-    setData([...list]);
-  }
+  const filteredData = useMemo(() => {
+    if (selectedSpecialties.length === 0 && selectedDates.length === 0)
+      return list;
 
-  function filterBySpecialty(specialty: string) {
-    setData(
-      data.filter((doctor) =>
-        doctor.specialty.toLowerCase().includes(specialty.toLowerCase())
-      )
+    const selectedDateStrings = selectedDates.map((d) =>
+      formatDate(new Date(d))
     );
-  }
+
+    return list.filter((doctor) => {
+      const matchesSpecialty =
+        selectedSpecialties.length === 0 ||
+        selectedSpecialties.includes(doctor.specialty);
+
+      if (!matchesSpecialty) return false;
+
+      if (selectedDateStrings.length === 0) return true;
+
+      return doctor.availability.some(
+        (item) =>
+          item.hours.some((hour) => hour.available) &&
+          selectedDateStrings.includes(formatDate(item.date))
+      );
+    });
+  }, [list, selectedSpecialties, selectedDates]);
 
   return (
     <div className="w-full">
-      <AppAccordion className="mb-10" type="single" collapsible>
-        <AppAccordionItem value="filter" header="Filter">
-          Hola <button onClick={() => filterBySpecialty("a")}>Test</button>
-          <button onClick={() => resetFilters()}>Reset</button>
+      <AppAccordion
+        className="mb-10"
+        type="single"
+        defaultValue="filter"
+        collapsible
+      >
+        <AppAccordionItem value="filter" header="Filter" className="text-xs">
+          <div className="mb-5">
+            <p className="text-xs mb-2 font-medium ml-3.5">By Availability:</p>
+            <AppToggleGroup
+              type="multiple"
+              className="gap-1 flex-wrap"
+              value={selectedDates}
+              onValueChange={(value) => {
+                startTransition(() => {
+                  setSelectedDates(value);
+                });
+              }}
+            >
+              {availabilities.map((date, index) => {
+                return (
+                  <AppToggleGroupItem key={index} value={date} size="small">
+                    {getCalendarDate(date)} {getSmallDate(date, false)}
+                  </AppToggleGroupItem>
+                );
+              })}
+            </AppToggleGroup>
+          </div>
+          <div>
+            <p className="text-xs mb-2 font-medium ml-3.5">By Specialty:</p>
+            <AppToggleGroup
+              type="multiple"
+              className="gap-1 flex-wrap"
+              value={selectedSpecialties}
+              onValueChange={(value) => {
+                startTransition(() => {
+                  setSelectedSpecialties(value);
+                });
+              }}
+            >
+              {specialties.map((specialty, index) => {
+                return (
+                  <AppToggleGroupItem
+                    key={index}
+                    value={specialty}
+                    size="small"
+                  >
+                    {specialty}
+                  </AppToggleGroupItem>
+                );
+              })}
+            </AppToggleGroup>
+          </div>
         </AppAccordionItem>
       </AppAccordion>
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 grid-rows-4 gap-5">
         <Suspense fallback={<p>Loading...</p>}>
-          {data.map((item, index) => {
-            return <AppCard key={index} {...item} />;
-          })}
+          {filteredData.length > 0 ? (
+            filteredData.map((item) => {
+              return <AppCard key={item.id} {...item} />;
+            })
+          ) : (
+            <p>No se encontraron elementos</p>
+          )}
         </Suspense>
       </div>
     </div>
