@@ -69,9 +69,9 @@ export default function AppAuthLoginPage() {
   return (
     <>
       <AppContainer className="flex items-center py-5">
-        <div className="w-full h-full grid grid-cols-2 gap-5">
+        <div className="w-full h-full grid lg:grid-cols-2 gap-12 lg:gap-5">
           <AppImage
-            className="w-full h-full min-h-screen rounded-xl border border-gray-400"
+            className="w-full h-60 sm:h-[40vw] lg:h-full lg:min-h-screen rounded-xl border border-gray-400"
             src="https://i0.wp.com/port2flavors.com/wp-content/uploads/2022/07/placeholder-614.png?fit=1200%2C800&ssl=1"
             alt=""
           />

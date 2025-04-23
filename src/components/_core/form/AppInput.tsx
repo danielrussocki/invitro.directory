@@ -20,6 +20,8 @@ export default function AppInput({
   type = "text",
   serverInvalid,
   className,
+  forceMatch,
+  match,
   ...props
 }: Props) {
   const inputClassName = classNames(
@@ -35,8 +37,8 @@ export default function AppInput({
         </Form.Label>
         <Form.Message
           className="text-xs opacity-80"
-          match={props.match}
-          forceMatch={props.forceMatch}
+          match={match}
+          forceMatch={forceMatch}
         >
           {props.message}
         </Form.Message>

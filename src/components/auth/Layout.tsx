@@ -11,16 +11,26 @@ export default function AppAuthLayout() {
     <>
       <div className="fixed top-0 left-0 w-full py-10 2xl:py-6.5">
         <AppNavigationMenu>
-          <AppNavigationItem href="/">Home</AppNavigationItem>
+          <AppNavigationItem
+            href="/"
+            className="text-xs lg:text-base lg:leading-none"
+          >
+            Home
+          </AppNavigationItem>
           {[...Array(3)].map((_, index) => {
             return (
-              <AppNavigationItem href="/auth/login" key={index}>
+              <AppNavigationItem
+                href="/auth/login"
+                key={index}
+                className="text-xs lg:text-base lg:leading-none"
+              >
                 Item {index + 1}
               </AppNavigationItem>
             );
           })}
           <AppNavigationItem
             isTrigger
+            className="text-xs lg:text-base lg:leading-none"
             content={
               <ul className="one m-0 grid list-none gap-x-2.5 p-[22px] sm:w-[500px] sm:grid-cols-2 sm:gap-2.5">
                 {[...Array(8)].map((_, index) => {
