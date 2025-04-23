@@ -1,5 +1,5 @@
 /* lib */
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 /* components */
 import AppForm from "@/components/_core/form/AppForm";
@@ -24,13 +24,32 @@ import {
 /* types */
 import type { FormEvent } from "react";
 
+type AuthLoginInputs = {
+  email: string;
+  password: string;
+};
+
+type AuthLoginInputErrors = {
+  email: boolean;
+  password: boolean;
+};
+
 export default function AppAuthLoginPage() {
+  const [input, setInput] = useState<AuthLoginInputs>({
+    email: "user@invitro.com",
+    password: "12345678",
+  });
+  const [errors, setErrors] = useState<AuthLoginInputErrors>({
+    email: false,
+    password: false,
+  });
   const toastRef = useRef<AppToastRef>(null);
   const navigate = useNavigate();
 
   /* handlers */
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (Object.values(errors).some((v) => v === true)) return;
     navigate("/dashboard");
   }
 
@@ -40,12 +59,19 @@ export default function AppAuthLoginPage() {
     }
   }
 
+  useEffect(() => {
+    setErrors({
+      email: input.email.trim() === "",
+      password: input.password.trim() === "",
+    });
+  }, [input]);
+
   return (
     <>
-      <AppContainer className="flex items-center">
+      <AppContainer className="flex items-center py-5">
         <div className="w-full h-full grid grid-cols-2 gap-5">
           <AppImage
-            className="w-full h-full min-h-screen rounded-xl border-2 border-black"
+            className="w-full h-full min-h-screen rounded-xl border border-gray-400"
             src="https://i0.wp.com/port2flavors.com/wp-content/uploads/2022/07/placeholder-614.png?fit=1200%2C800&ssl=1"
             alt=""
           />
@@ -62,15 +88,27 @@ export default function AppAuthLoginPage() {
                 <AppInput
                   label="Email"
                   name="email"
-                  value="user@invitro.com"
+                  value={input.email}
+                  onChange={(e) =>
+                    setInput((curr) => ({ ...curr, email: e.target.value }))
+                  }
                   placeholder="john.doe@example.com"
+                  match="valueMissing"
+                  serverInvalid={errors.email}
+                  forceMatch={errors.email}
                 />
                 <AppInput
                   label="Password"
                   name="password"
-                  value="12345678"
+                  value={input.password}
+                  onChange={(e) =>
+                    setInput((curr) => ({ ...curr, password: e.target.value }))
+                  }
                   placeholder="********"
+                  match="valueMissing"
                   type="password"
+                  serverInvalid={errors.password}
+                  forceMatch={errors.password}
                 />
               </AppForm>
               <AppDivider className="mt-6 mb-5" label="or login with" />

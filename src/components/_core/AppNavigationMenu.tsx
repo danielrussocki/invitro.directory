@@ -14,16 +14,16 @@ type AppNavigationProps = ICommonProps;
 export default function AppNavigation({ children }: AppNavigationProps) {
   return (
     <NavigationMenu.Root className="relative flex justify-center w-screen z-10">
-      <NavigationMenu.List className="flex items-center justify-center bg-white border-2 p-1 rounded-md list-none shadow-lg m-0">
+      <NavigationMenu.List className="flex items-center justify-center bg-white border border-gray-400 p-1 rounded-md list-none shadow-sm m-0">
         {children}
       </NavigationMenu.List>
 
       <NavigationMenu.Indicator className="flex items-end justify-center h-2.5 top-full overflow-hidden z-10 transition-(--transition-width-transform) duration-250 ease-in state-visible:animate-fade-in state-hidden:animate-fade-out">
-        <div className="relative top-7/10 bg-black w-2.5 h-2.5 rotate-45 rounded-tl-xs" />
+        <div className="relative top-7/10 bg-gray-400 w-2.5 h-2.5 rotate-45 rounded-tl-xs" />
       </NavigationMenu.Indicator>
 
       <div className="absolute left-0 top-full flex w-full justify-center perspective-distant">
-        <NavigationMenu.Viewport className="relative origin-top mt-2.5 w-full border-2 bg-white rounded-md overflow-hidden shadow-navigation-viewport h-(--radix-navigation-menu-viewport-height) transition-(--transition-size) duration-300 ease-in state-open:animate-scale-in state-closed:animate-scale-out sm:w-(--radix-navigation-menu-viewport-width)" />
+        <NavigationMenu.Viewport className="relative origin-top mt-2.5 w-full border border-gray-400 bg-white rounded-md overflow-hidden shadow-sm h-(--radix-navigation-menu-viewport-height) transition-(--transition-size) duration-300 ease-in state-open:animate-scale-in state-closed:animate-scale-out sm:w-(--radix-navigation-menu-viewport-width)" />
       </div>
     </NavigationMenu.Root>
   );

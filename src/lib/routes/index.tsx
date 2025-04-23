@@ -1,6 +1,5 @@
+/* lib */
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
-/* components */
-import App from "@/App";
 /* layouts */
 import AppAuthLayout from "@/components/auth/Layout";
 import AppDashboardLayout from "@/components/dashboard/Layout";
@@ -14,7 +13,7 @@ export default function AppRouting() {
     <BrowserRouter>
       <Routes>
         {/* not protected */}
-        <Route index element={<App />} />
+        <Route path="/" element={<Navigate to="/auth/login" replace />} />
         {/* auth */}
         <Route element={<AppAuthLayout />}>
           <Route path="auth/login" element={<AppAuthLoginPage />} />
