@@ -1,5 +1,6 @@
 /* lib */
 import { MouseEventHandler, useState } from "react";
+import { useNavigate } from "react-router";
 import classNames from "classnames";
 /* components */
 import AppCard from "@/components/_core/panel/AppCard";
@@ -23,6 +24,8 @@ import {
   getSmallDate,
   parseToMoment,
 } from "@/lib/utils/date";
+/* store */
+import { useAppointmentStore } from "@/lib/store/appointment";
 /* types */
 import type { ICommonProps } from "@/lib/types/common";
 import type { IAvailability, IDoctor } from "@/lib/types/doctor";
@@ -30,7 +33,11 @@ import type { IAvailability, IDoctor } from "@/lib/types/doctor";
 type Props = Omit<ICommonProps, "children"> & IDoctor;
 
 export default function AppDoctorCard({ className, ...props }: Props) {
+  const navigate = useNavigate();
   const [open, setOpen] = useState<boolean>(false);
+  const [modalValue, setModalValue] = useState<string>("");
+  /* state */
+  const addAppointment = useAppointmentStore((state) => state.addAppointment);
 
   const rootClassName = classNames(
     "flex flex-col gap-5",
@@ -55,6 +62,20 @@ export default function AppDoctorCard({ className, ...props }: Props) {
 
   function onMoreClickHandler() {
     setOpen(true);
+  }
+
+  function onSaveModal() {
+    if (modalValue.trim() === "") return;
+    const [date, hour] = modalValue.split("-");
+    addAppointment({
+      date: parseToMoment(date).toDate(),
+      hour,
+      specialty: props.specialty,
+      location: props.location,
+      doctor: props.name,
+    });
+    setOpen(false);
+    navigate("/dashboard/summary");
   }
 
   return (
@@ -97,16 +118,24 @@ export default function AppDoctorCard({ className, ...props }: Props) {
                 Book Appointment
               </>
             }
+            title="Choose your appointment"
+            description="Lorem ipsum dolor sit amet. Culpa aliquam, officiis delectus ab laborum quisquam unde voluptatum nobis magnam?"
             open={open}
             onOpenChange={setOpen}
             triggerClassName="gap-x-2 items-center w-full justify-center sm:w-auto sm:justify-start"
+            onSaveAction={() => onSaveModal()}
           >
-            <div className="grid grid-cols-5 gap-x-2.5">
-              {props.availability.map((schedule, i) => {
-                return (
-                  <>
-                    <AppToggleGroup type="single" className="flex-col gap-2">
-                      <div key={i} className="text-center mb-2">
+            <AppToggleGroup
+              type="single"
+              className="w-full"
+              value={modalValue}
+              onValueChange={setModalValue}
+            >
+              <div className="grid grid-cols-5 gap-x-1 w-full">
+                {props.availability.map((schedule, i) => {
+                  return (
+                    <div className="flex flex-col gap-1" key={i}>
+                      <div className="text-center mb-2">
                         <p className="font-medium leading-none">
                           {getCalendarDate(schedule.date)}
                         </p>
@@ -117,22 +146,30 @@ export default function AppDoctorCard({ className, ...props }: Props) {
                       {schedule.hours.map((hour, indexHour) => {
                         if (hour.available)
                           return (
-                            <AppToggleGroupItem value={String(indexHour)}>
+                            <AppToggleGroupItem
+                              key={indexHour}
+                              value={`${parseToMoment(schedule.date).format(
+                                "YYYY/MM/DD"
+                              )}-${hour.time}`}
+                            >
                               {hour.time}
                             </AppToggleGroupItem>
                           );
 
                         return (
-                          <div className="rounded-sm px-2 py-1.5 text-center items-center line-through justify-center leading-4 text-gray-500 first:rounded-l last:rounded-r focus:z-10 focus:outline-none">
+                          <div
+                            className="rounded-sm px-2 py-1.5 text-center items-center line-through justify-center leading-4 text-gray-500 first:rounded-l last:rounded-r focus:z-10 focus:outline-none"
+                            key={indexHour}
+                          >
                             {hour.time}
                           </div>
                         );
                       })}
-                    </AppToggleGroup>
-                  </>
-                );
-              })}
-            </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </AppToggleGroup>
           </AppDialog>
         </div>
       </div>

@@ -29,7 +29,7 @@ export default function AppButton({
     { "rounded-full": rounded },
     { "px-3 py-1.5 text-xs leading-none": size === "xs" },
     { "px-4 py-2 text-xs leading-none": size === "sm" },
-    { "px-2.5 py-2.5": size === "md" },
+    { "px-5 py-2.5": size === "md" },
     className
   );
 

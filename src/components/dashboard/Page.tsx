@@ -1,7 +1,7 @@
 /* lib */
 import { use, Suspense, useMemo, startTransition } from "react";
 /* components */
-import AppCard from "@/components/dashboard/components/AppDoctorCard";
+import AppDoctorCard from "@/components/dashboard/_components/AppDoctorCard";
 import AppAccordion, {
   AppAccordionItem,
 } from "@/components/_core/panel/AppAccordion";
@@ -123,7 +123,7 @@ export default function AppDashboardPage() {
         <Suspense fallback={<p>Loading...</p>}>
           {filteredData.length > 0 ? (
             filteredData.map((item) => {
-              return <AppCard key={item.id} {...item} />;
+              return <AppDoctorCard key={item.id} {...item} />;
             })
           ) : (
             <p>We couldn't find any results based on your selected filters.</p>

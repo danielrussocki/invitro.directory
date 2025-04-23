@@ -15,12 +15,14 @@ type Props = ICommonProps &
     description?: ReactNode;
     triggerContent?: ReactNode;
     triggerClassName?: string;
+    onSaveAction?: () => void;
   };
 
 export default function AppDialog({
   open,
   title,
   description,
+  onSaveAction = () => null,
   triggerContent,
   triggerClassName,
   children,
@@ -94,22 +96,24 @@ export default function AppDialog({
                 style={{ transformPerspective: 500 }}
               >
                 {title && (
-                  <Dialog.Title className="m-0 text-[17px] font-medium text-mauve12">
+                  <Dialog.Title className="mb-5 px-4 text-[17px] font-medium text-mauve12">
                     {title}
                   </Dialog.Title>
                 )}
                 {description && (
-                  <Dialog.Description className="mb-5 mt-2.5 text-[15px] leading-normal text-mauve11">
+                  <Dialog.Description className="px-4 mb-10 mt-2.5 text-sm leading-normal text-gray-700">
                     {description}
                   </Dialog.Description>
                 )}
                 {children}
                 <div className="mt-[25px] flex justify-end">
-                  <Dialog.Close asChild>
-                    <button className="inline-flex h-[35px] items-center justify-center rounded bg-green4 px-[15px] font-medium leading-none text-green11 outline-none outline-offset-1 hover:bg-green5 focus-visible:outline-2 focus-visible:outline-green6 select-none">
-                      Save changes
-                    </button>
-                  </Dialog.Close>
+                  <AppButton
+                    severity="primary"
+                    size="md"
+                    onClick={() => onSaveAction()}
+                  >
+                    Save changes
+                  </AppButton>
                 </div>
                 <Dialog.Close asChild>
                   <button

@@ -29,7 +29,7 @@ export default function AppAvatar({
         alt={props.alt}
       />
       <Avatar.Fallback
-        className="leading-none flex size-full items-center justify-center bg-white text-base font-medium text-gray-900"
+        className="leading-none flex size-full items-center justify-center bg-gray-100 text-base font-medium text-gray-900"
         delayMs={delayMs}
       >
         {children}

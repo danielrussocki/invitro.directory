@@ -5,8 +5,9 @@ import AppAuthLayout from "@/components/auth/Layout";
 import AppDashboardLayout from "@/components/dashboard/Layout";
 /* pages */
 import AppAuthLoginPage from "@/components/auth/login/Page";
-import AppAuthRegisterPage from "@/components/auth/register/Page";
 import AppDashboardIndexPage from "@/components/dashboard/Page";
+import AppAuthRegisterPage from "@/components/auth/register/Page";
+import AppSummaryPage from "@/components/dashboard/summary/Page";
 
 export default function AppRouting() {
   return (
@@ -26,6 +27,7 @@ export default function AppRouting() {
         {/* dashboard */}
         <Route path="dashboard" element={<AppDashboardLayout />}>
           <Route index element={<AppDashboardIndexPage />} />
+          <Route path="summary" element={<AppSummaryPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

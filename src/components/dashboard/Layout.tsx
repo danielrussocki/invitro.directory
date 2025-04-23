@@ -2,7 +2,7 @@
 import { Outlet } from "react-router";
 /* components */
 import AppContainer from "@/components/_core/grid/AppContainer";
-import AppNavigation from "@/components/dashboard/components/AppNavigation";
+import AppNavigation from "@/components/dashboard/_components/AppNavigation";
 
 export default function AppDashboardLayout() {
   return (
