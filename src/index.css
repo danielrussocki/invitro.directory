@@ -30,6 +30,8 @@
   --animate-hide: hide 100ms ease-in;
   --animate-slide-in: slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
   --animate-swipe-out: swipeOut 100ms ease-out;
+  --animate-slide-down: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+  --animate-slide-up: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
 
   @keyframes enterFromRight {
     from {
@@ -139,6 +141,24 @@
     }
     to {
       transform: translateX(calc(100% + var(--viewport-padding)));
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
     }
   }
 }

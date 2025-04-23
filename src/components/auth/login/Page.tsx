@@ -12,7 +12,7 @@ import AppButton from "@/components/_core/button/AppButton";
 import AppDivider from "@/components/_core/panel/AppDivider";
 import AppParagraph from "@/components/_core/text/AppParagraph";
 import AppContainer from "@/components/_core/grid/AppContainer";
-import AppHeadingOne from "@/components/_core/heading/AppHeadingOne";
+import AppHeadingOne from "@/components/_core/heading/AppHeading";
 /* icons */
 import {
   GitHubLogoIcon,
@@ -42,7 +42,7 @@ export default function AppAuthLoginPage() {
 
   return (
     <>
-      <AppContainer innerClassName="flex items-center">
+      <AppContainer className="flex items-center">
         <div className="w-full h-full grid grid-cols-2 gap-5">
           <AppImage
             className="w-full h-full min-h-screen rounded-xl border-2 border-black"

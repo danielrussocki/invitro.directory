@@ -3,45 +3,29 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 /* components */
 import AppButton from "@/components/_core/button/AppButton";
+import AppHeading from "@/components/_core/heading/AppHeading";
 /* icons */
 import {
   MotionCross1Icon,
   MotionHamburguerIcon,
 } from "@/components/_core/icon/Motion";
-/* types */
-import { ICommonProps } from "@/lib/types/common";
 
-type Props = ICommonProps;
-
-export default function AppAsideMenu({ children }: Props) {
+export default function AppNavigation() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  function asideClickHandler() {
+  function navigationClickHandler() {
     setIsOpen((current) => !current);
   }
 
   return (
-    <div className="flex">
-      <div className="h-screen p-5 sticky top-0 left-0 z-99">
-        <motion.aside
-          className="p-2.5 w-full h-full flex bg-white"
-          variants={{
-            closed: {
-              width: 60,
-              justifyContent: "center",
-              borderRadius: 30,
-            },
-            opened: {
-              width: 320,
-              justifyContent: "flex-end",
-              borderRadius: 20,
-            },
-          }}
-          initial="closed"
-          animate={isOpen ? "opened" : "closed"}
-        >
-          <motion.div layout>
-            <AppButton rounded onClick={() => asideClickHandler()}>
+    <>
+      <div className="sticky top-0 left-0 z-99 p-5 pointer-events-none">
+        <motion.nav className="rounded-full w-full h-15 pl-7 py-3 pr-3 flex justify-end items-center bg-white shadow-sm pointer-events-auto">
+          <motion.div className="w-full h-full flex items-center justify-between">
+            <AppHeading className="uppercase" size="xl">
+              Logo
+            </AppHeading>
+            <AppButton rounded onClick={() => navigationClickHandler()}>
               <AnimatePresence>
                 {isOpen ? (
                   <MotionCross1Icon
@@ -63,13 +47,8 @@ export default function AppAsideMenu({ children }: Props) {
               </AnimatePresence>
             </AppButton>
           </motion.div>
-        </motion.aside>
+        </motion.nav>
       </div>
-      <div className="w-full py-5 pr-5">
-        <div className="bg-white w-full min-h-screen p-10 rounded-4xl">
-          {children}
-        </div>
-      </div>
-    </div>
+    </>
   );
 }

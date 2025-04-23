@@ -3,21 +3,10 @@ import classNames from "classnames";
 /* types */
 import type { ICommonProps } from "@/lib/types/common";
 
-type Props = ICommonProps & {
-  innerClassName?: string;
-};
+type Props = ICommonProps;
 
-export default function AppContainer({
-  children,
-  className,
-  innerClassName,
-}: Props) {
-  const containerClassName = classNames("bg-slate-200", className);
-  const innerContainerClassName = classNames("w-full", innerClassName);
+export default function AppContainer({ children, className }: Props) {
+  const containerClassName = classNames("w-full px-5", className);
 
-  return (
-    <div className={containerClassName}>
-      <main className={innerContainerClassName}>{children}</main>
-    </div>
-  );
+  return <div className={containerClassName}>{children}</div>;
 }

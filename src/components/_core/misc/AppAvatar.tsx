@@ -17,7 +17,7 @@ export default function AppAvatar({
   ...props
 }: Props) {
   const avatarClassName = classNames(
-    "inline-flex w-40 select-none items-center justify-center overflow-hidden rounded-sm align-middle",
+    "inline-flex w-full max-h-50 sm:w-40 select-none items-center justify-center overflow-hidden rounded-sm align-middle",
     className
   );
 

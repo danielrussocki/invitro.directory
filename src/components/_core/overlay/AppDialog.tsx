@@ -1,5 +1,4 @@
 /* lib */
-import { useState } from "react";
 import { Dialog } from "radix-ui";
 import { motion, AnimatePresence } from "motion/react";
 /* components */
@@ -10,23 +9,27 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 import type { ICommonProps } from "@/lib/types/common";
 import type { ReactNode } from "react";
 
-type Props = ICommonProps & {
-  title?: ReactNode;
-  description?: ReactNode;
-  triggerContent?: ReactNode;
-};
+type Props = ICommonProps &
+  Dialog.DialogProps & {
+    title?: ReactNode;
+    description?: ReactNode;
+    triggerContent?: ReactNode;
+    triggerClassName?: string;
+  };
 
 export default function AppDialog({
+  open,
+  title,
+  description,
   triggerContent,
+  triggerClassName,
   children,
   ...props
 }: Props) {
-  const [open, setOpen] = useState<boolean>(false);
-
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
+    <Dialog.Root open={open} {...props}>
       <Dialog.Trigger asChild>
-        <AppButton className="text-xs leading-normal">
+        <AppButton size="sm" severity="primary" className={triggerClassName}>
           {triggerContent}
         </AppButton>
       </Dialog.Trigger>
@@ -90,14 +93,14 @@ export default function AppDialog({
                 }}
                 style={{ transformPerspective: 500 }}
               >
-                {props.title && (
+                {title && (
                   <Dialog.Title className="m-0 text-[17px] font-medium text-mauve12">
-                    {props.title}
+                    {title}
                   </Dialog.Title>
                 )}
-                {props.description && (
+                {description && (
                   <Dialog.Description className="mb-5 mt-2.5 text-[15px] leading-normal text-mauve11">
-                    {props.description}
+                    {description}
                   </Dialog.Description>
                 )}
                 {children}

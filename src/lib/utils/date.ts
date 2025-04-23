@@ -10,8 +10,9 @@ export function getDayOfMonth(date: MomentInput) {
   return moment(date).format("D");
 }
 
-export function getSmallDate(date: MomentInput) {
-  return moment(date).format("D MMM");
+export function getSmallDate(date: MomentInput, short: boolean = true) {
+  if (short) return moment(date).format("D MMM");
+  return moment(date).format("D MMMM");
 }
 
 export function getFromNow(date: MomentInput) {
@@ -34,6 +35,10 @@ export function parseToMoment(
   format: string = "YYYY-MM-DD"
 ) {
   return moment(date, format);
+}
+
+export function getMomentToday() {
+  return moment().startOf("day");
 }
 
 export function getClosestFutureDate(
